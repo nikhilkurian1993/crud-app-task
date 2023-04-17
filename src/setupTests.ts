@@ -4,11 +4,25 @@
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
 import { server } from "./mock/server";
+import { testQueryClient } from "./mock/utils";
 
-// // Establish API mocking before all tests.
-beforeAll(() => server.listen());
-// // Reset any request handlers that we may add during the tests,
-// // so they don't affect other tests.
-afterEach(() => server.resetHandlers());
-// // Clean up after the tests are finished.
+beforeAll(() => {
+  window.matchMedia =
+    window.matchMedia ||
+    function () {
+      return {
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+      };
+    };
+
+  server.listen({ onUnhandledRequest: "error" });
+});
+
+afterEach(async () => {
+  await testQueryClient.cancelQueries();
+  testQueryClient.clear();
+  server.resetHandlers();
+});
+
 afterAll(() => server.close());

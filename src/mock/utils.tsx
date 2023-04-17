@@ -9,15 +9,11 @@ const createTestQueryClient = () =>
         retry: false,
       },
     },
-    logger: {
-      log: console.log,
-      warn: console.warn,
-      error: () => {},
-    },
   });
 
+export const testQueryClient = createTestQueryClient();
+
 export function renderWithClient(ui: React.ReactElement) {
-  const testQueryClient = createTestQueryClient();
   const { rerender, ...result } = render(
     <QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>
   );
@@ -34,7 +30,6 @@ export function renderWithClient(ui: React.ReactElement) {
 }
 
 export function createWrapper() {
-  const testQueryClient = createTestQueryClient();
   return ({ children }: { children: React.ReactNode }) => (
     <QueryClientProvider client={testQueryClient}>
       {children}

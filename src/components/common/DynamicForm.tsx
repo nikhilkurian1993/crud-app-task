@@ -91,6 +91,7 @@ const DynamicForm: React.FC<Props> = ({ schema, onClose, record, type }) => {
   return (
     <>
       <Form
+        data-testid="add-event-form"
         form={form}
         layout="vertical"
         onFinish={onFinish}

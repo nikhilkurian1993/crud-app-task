@@ -12,8 +12,15 @@ import CustomSpinner from "../common/customSpinner";
 
 const Events: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { data: schema } = useGetSchema();
-  const { data, isLoading } = useGetEvent(searchTerm, !!schema?.length);
+  const {
+    data: schema,
+    isLoading: isSchemaLoading,
+    isSuccess: isSchemaSuccess,
+  } = useGetSchema();
+  const { data, isLoading, isSuccess } = useGetEvent(
+    searchTerm,
+    !!schema?.length
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [record, setRecord] = useState<Field>();

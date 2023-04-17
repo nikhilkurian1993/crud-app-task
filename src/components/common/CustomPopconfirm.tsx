@@ -1,13 +1,5 @@
-import { message, Popconfirm } from "antd";
-const confirm = (e: React.MouseEvent<HTMLElement>) => {
-  console.log(e);
-  message.success("Click on Yes");
-};
+import { Popconfirm } from "antd";
 
-const cancel = (e: React.MouseEvent<HTMLElement>) => {
-  console.log(e);
-  message.error("Click on No");
-};
 interface Props {
   title: string;
   description: string;
@@ -29,7 +21,6 @@ const CustomPopconfirm: React.FC<Props> = ({
       title={title}
       description={description}
       onConfirm={handleConfirm}
-      //onCancel={cancel}
       okText="Yes"
       cancelText="No"
     >

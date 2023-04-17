@@ -11,6 +11,12 @@ const DynamicTable = ({ columns, dataSource }: PropType) => {
       data-testid="events-table"
       dataSource={dataSource}
       columns={columns}
+      onRow={(record: any) => {
+        return {
+          "data-testid": "event-record",
+          id: record.id,
+        } as any;
+      }}
     />
   );
 };
