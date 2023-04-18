@@ -8,6 +8,7 @@ interface PropType {
 const DynamicTable = ({ columns, dataSource }: PropType) => {
   return (
     <Table
+      rowKey="id"
       data-testid="events-table"
       dataSource={dataSource}
       columns={columns}

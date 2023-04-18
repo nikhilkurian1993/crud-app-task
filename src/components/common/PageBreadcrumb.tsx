@@ -1,13 +1,10 @@
 import React from "react";
 import { Breadcrumb } from "antd";
-const { Item } = Breadcrumb;
+
 const PageBreadcrumb: React.FC = () => {
+  const items = [{ title: "Home" }, { title: "List" }, { title: "App" }];
   return (
-    <Breadcrumb style={{ margin: "16px 0", padding: "0 50px" }}>
-      <Item>Home</Item>
-      <Item>List</Item>
-      <Item>App</Item>
-    </Breadcrumb>
+    <Breadcrumb style={{ margin: "16px 0", padding: "0 50px" }} items={items} />
   );
 };
 
